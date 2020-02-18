@@ -1,0 +1,208 @@
+﻿<Window x:Class="WPFPokedex.frmStatsCompare"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPokedex"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Stats Compare" Height="800" Width="1224" ResizeMode="NoResize" Background="#ed3e3e" Loaded="Window_Loaded">
+    <Grid MinHeight="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="#2e3137">
+            <StatusBarItem>
+                <Label x:Name="lblStatusMessage"
+                       FontWeight="DemiBold"
+                       Padding="50 0 0 0"
+                       Foreground="White">
+                    Login Success
+                </Label>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Background="#2e3137" Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <Button Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedexHome_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Home"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnPokedexList" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedexList_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="PokéDex"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnStatsCompare" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnStatsCompare_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Stats Compare"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLocation" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLocation_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Location"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnAdmin" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnAdmin_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Admin" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLogout" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLogout_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Logout" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Image Source="Images\Pokedex_logo.png" Margin="10"/>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="650"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnBack" Content="Back" Width="100" Height="50" Grid.Row="1" Grid.Column="0" Margin="10,19,379,119" Click="btnBack_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0 0 0 5" />
+            <Button x:Name="btnCompare" IsEnabled="False" Content="Compare" Width="100" Height="50" Grid.Row="1" Margin="389,25,10,125" Click="btnCompare_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0 0 0 5"/>
+            <Canvas x:Name="canSelect" Grid.ColumnSpan="2" Visibility="Visible">
+                <DataGrid x:Name="dgPokemonList2" SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="dgPokemonList2_MouseDoubleClick" Loaded="dgPokemonList2_Loaded" Width="490" Height="615" Grid.Column="1" Canvas.Left="500" Canvas.Top="40"/>
+                <DataGrid x:Name="dgPokemonList1" SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="dgPokemonList1_MouseDoubleClick" Loaded="dgPokemonList1_Loaded" Width="490" Height="615" Canvas.Top="40" HorizontalGridLinesBrush="Black" ForceCursor="True"/>
+                <ComboBox x:Name="cboPokemonVersion1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Loaded="cboPokemonVersion1_Loaded" SelectionChanged="cboPokemonVersion1_SelectionChanged" Canvas.Top="10"/>
+                <ComboBox x:Name="cboPokemonVersion2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Grid.Column="1" Loaded="cboPokemonVersion2_Loaded" SelectionChanged="cboPokemonVersion2_SelectionChanged" Canvas.Left="868" Canvas.Top="10" />
+
+            </Canvas>
+
+
+
+            <Canvas x:Name="canCompare" Visibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,10,0">
+                <Rectangle  Fill="#2e3137" Grid.ColumnSpan="2" Width="977"  Visibility="Visible" Height="610" Canvas.Top="40" Canvas.Left="20"/>
+                <Rectangle Fill="GhostWhite" Width="460"  Visibility="Visible" Height="590" Canvas.Left="36" Canvas.Top="50"/>
+                <Rectangle Fill="GhostWhite" Width="460" Visibility="Visible" Grid.Column="1" Height="590" Canvas.Top="50" Canvas.Left="518"/>
+                <Image Height="235" Canvas.Left="145" Canvas.Top="79" Width="218" OpacityMask="Red" />
+                <Label x:Name="lblType2_1" Content="Type2 :" Canvas.Left="36" Canvas.Top="369" Height="25" Width="117"/>
+                <Label x:Name="lblType1_1" Content="Type : " Canvas.Left="36" Canvas.Top="339" Height="25" Width="117"/>
+                <Label x:Name="lblHP_1" Content="HP :" Canvas.Left="41" Canvas.Top="459" Height="25" Width="117"/>
+                <Label x:Name="lblAttack_1" Content="Attack :" Canvas.Left="41" Canvas.Top="484" Height="25" Width="117"/>
+                <Label x:Name="lblSpeed_1" Content="Speed :" Canvas.Left="41" Canvas.Top="585" Height="25" Width="117"/>
+                <Label x:Name="lblDefense_1" Content="Defense :" Canvas.Left="41" Canvas.Top="509" Height="25" Width="117"/>
+                <Label x:Name="lblSpecialAttack_1" Content="Special Attack :" Canvas.Left="41" Canvas.Top="534" Height="25" Width="117"/>
+                <Label x:Name="lblSpecialDefense_1" Content="Special Defense :" Canvas.Left="41" Canvas.Top="560" Height="25" Width="117"/>
+                <Image x:Name="imgPokemon1" Height="235" Canvas.Left="145" Canvas.Top="79" Width="218"/>
+                <Label x:Name="lblTypeHolder_1" Content="Normal " Canvas.Left="158" Canvas.Top="339" Height="25" Width="118"/>
+                <Label x:Name="lblType2Holder_1" Content="Normal" Canvas.Left="158" Canvas.Top="369" Height="25" Width="118"/>
+                <Label x:Name="lblTotal_1" Content="Total :" Canvas.Left="41" Canvas.Top="610" Height="25" Width="117"/>
+                <ProgressBar x:Name="barHP_1" Height="20" Canvas.Left="158" Canvas.Top="459" Width="314"/>
+                <ProgressBar x:Name="barAttack_1" Height="20" Canvas.Left="158" Canvas.Top="484" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <Label x:Name="lblAbility1_1" Content="Ability1 :" Canvas.Left="281" Canvas.Top="339" Height="25" Width="104"/>
+                <ProgressBar x:Name="barDefense_1" Height="20" Canvas.Left="158" Canvas.Top="509" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpecialAttack_1" Height="20" Canvas.Left="158" Canvas.Top="534" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpecialDefense_1" Height="20" Canvas.Left="158" Canvas.Top="559" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpeed_1" Height="20" Canvas.Left="158" Canvas.Top="585" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barTotal_1" Height="20" Canvas.Left="158" Canvas.Top="610" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <Label x:Name="lblAbility2_1" Content="Ability2 :" Canvas.Left="281" Canvas.Top="369" Height="25" Width="104"/>
+                <Label x:Name="lblAbilityHolder_1" Content="Fight" Canvas.Left="385" Canvas.Top="339" Height="25" Width="104"/>
+                <Label x:Name="lblAbility2Holder_1" Content="Flight :" Canvas.Left="385" Canvas.Top="369" Height="25" Width="104"/>
+                <Label x:Name="lblType2_2" Content="Type2 :" Canvas.Left="525" Canvas.Top="369" Height="25" Width="117"/>
+                <Label x:Name="lblType_2" Content="Type : " Canvas.Left="525" Canvas.Top="339" Height="25" Width="117"/>
+                <Label x:Name="lblHP_2" Content="HP :" Canvas.Left="530" Canvas.Top="459" Height="25" Width="117"/>
+                <Label x:Name="lblAttack_2" Content="Attack :" Canvas.Left="530" Canvas.Top="484" Height="25" Width="117"/>
+                <Label x:Name="lblSpeed_2" Content="Speed :" Canvas.Left="530" Canvas.Top="585" Height="25" Width="117"/>
+                <Label x:Name="lblDefense_2" Content="Defense :" Canvas.Left="530" Canvas.Top="509" Height="25" Width="117"/>
+                <Label x:Name="lblSpecialAttack_2" Content="Special Attack :" Canvas.Left="530" Canvas.Top="534" Height="25" Width="117"/>
+                <Label x:Name="lblSpecialDefense_2" Content="Special Defense :" Canvas.Left="530" Canvas.Top="560" Height="25" Width="117"/>
+                <Label x:Name="lblTypeHolder_2" Content="Normal " Canvas.Left="647" Canvas.Top="339" Height="25" Width="118"/>
+                <Label x:Name="lblType2Holder_2" Content="Normal" Canvas.Left="647" Canvas.Top="369" Height="25" Width="118"/>
+                <Label x:Name="lblTotal_2" Content="Total :" Canvas.Left="530" Canvas.Top="610" Height="25" Width="117"/>
+                <ProgressBar x:Name="barHP_2" Height="20" Canvas.Left="647" Canvas.Top="459" Width="314"/>
+                <ProgressBar x:Name="barAttack_2" Height="20" Canvas.Left="647" Canvas.Top="484" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <Label x:Name="lblAbility1_2" Content="Ability1 :" Canvas.Left="770" Canvas.Top="339" Height="25" Width="104"/>
+                <ProgressBar x:Name="barDefense_2" Height="20" Canvas.Left="647" Canvas.Top="509" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpecialAttack_2" Height="20" Canvas.Left="647" Canvas.Top="534" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpecialDefense_2" Height="20" Canvas.Left="647" Canvas.Top="559" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barSpeed_2" Height="20" Canvas.Left="647" Canvas.Top="585" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <ProgressBar x:Name="barTotal_2" Height="20" Canvas.Left="647" Canvas.Top="610" Width="314" RenderTransformOrigin="0.461,1.596"/>
+                <Label x:Name="lblAbility_2" Content="Ability2 :" Canvas.Left="770" Canvas.Top="369" Height="25" Width="104"/>
+                <Label x:Name="lblAbilityHolder_2" Content="Fight" Canvas.Left="874" Canvas.Top="339" Height="25" Width="104"/>
+                <Label x:Name="lblAbility2Holder_2" Content="Flight :" Canvas.Left="874" Canvas.Top="369" Height="25" Width="104"/>
+                <Image x:Name="imgPokemon2" Height="235" Canvas.Left="634" Canvas.Top="79" Width="218"/>
+                <Label x:Name="lblPkmnName1" Content="Charmander" Canvas.Left="41" Canvas.Top="79" Width="99"/>
+                <Label x:Name="lblPkmnName2" Content="Bulbasaur" Canvas.Left="525" Canvas.Top="79" Width="99"/>
+                <Label x:Name="lblHPNum_1" Content="0" Canvas.Left="158" Canvas.Top="459" Height="20" FontSize="8"/>
+                <Label x:Name="lblAttackNum_1" Content="0" Canvas.Left="158" Canvas.Top="484" Height="20" FontSize="8"/>
+                <Label x:Name="lblDefenseNum_1" Content="0" Canvas.Left="158" Canvas.Top="509" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpecialAttackNum_1" Content="0" Canvas.Left="158" Canvas.Top="535" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpecialDefenseNum_1" Content="0" Canvas.Left="158" Canvas.Top="560" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpeedNum_1" Content="0" Canvas.Left="158" Canvas.Top="584" Height="20" FontSize="8"/>
+                <Label x:Name="lblTotalNum_1" Content="0" Canvas.Left="158" Canvas.Top="609" Height="20" FontSize="8"/>
+                <Label x:Name="lblHPNum_2" Content="0" Canvas.Left="647" Canvas.Top="460" Height="20" FontSize="8"/>
+                <Label x:Name="lblAttackNum_2" Content="0" Canvas.Left="647" Canvas.Top="484" Height="20" FontSize="8"/>
+                <Label x:Name="lblDefenseNum_2" Content="0" Canvas.Left="647" Canvas.Top="510" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpecialAttackNum_2" Content="0" Canvas.Left="647" Canvas.Top="535" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpecialDefenseNum_2" Content="0" Canvas.Left="647" Canvas.Top="559" Height="20" FontSize="8"/>
+                <Label x:Name="lblSpeedNum_2" Content="0" Canvas.Left="647" Canvas.Top="584" Height="20" FontSize="8"/>
+                <Label x:Name="lblTotalNum_2" Content="0" Canvas.Left="647" Canvas.Top="609" Height="20" FontSize="8"/>
+            </Canvas>
+
+            <Canvas x:Name="canBattle" Visibility="Hidden">
+                <Rectangle Fill="#FFF4F4F5" Height="630" Canvas.Left="250" Stroke="Black" Canvas.Top="10" Width="500"/>
+                <Image x:Name="imgWinner" Height="322" Canvas.Left="356" Canvas.Top="126" Width="288"/>
+                <Label x:Name="lblBattleStatus"  Content="WINNER!" Canvas.Left="390" Canvas.Top="532" Width="218" Height="72" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" />
+                <Label x:Name="lblWinnerName" Content="WINNER!" Canvas.Left="390" Canvas.Top="474" Width="218" Height="72" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" />
+            </Canvas>
+            <Button x:Name="btnSelectionChange1" Visibility="Hidden" Content="Reselect" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="100" Margin="212,19,177,119" Click="btnSelectionChange1_Click" Padding="0 0 0 5"/>
+            <Button x:Name="btnSelectionChange2" Visibility="Hidden" Content="Reselect" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="100" Margin="221,19,168,119" Grid.Column="1" Click="btnSelectionChange2_Click" Padding="0 0 0 5"/>
+            <Button x:Name="btnReset" Content="Reset" Visibility="Hidden" IsEnabled="False" Grid.Row="1"  Height="50" Grid.ColumnSpan="2"  Width="100" Margin="454,19,434,119" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnReset_Click" Padding="0 0 0 5"/>
+            <Button x:Name="btnBattle" IsEnabled="False" Content="Battle" Width="100" Height="50" Grid.Row="1" Margin="10,25,389,125" Click="btnBattle_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0 0 0 5" Grid.Column="1"/>
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>
+

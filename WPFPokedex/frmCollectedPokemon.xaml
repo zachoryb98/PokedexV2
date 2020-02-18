@@ -1,0 +1,134 @@
+﻿<Window x:Class="WPFPokedex.frmCollectedPokemon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPokedex"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Collected Pokemon" Height="800" Width="1224" ResizeMode="NoResize" Background="#ed3e3e" Loaded="Window_Loaded">
+    <Grid MinHeight="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"  Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="603*"/>
+                <ColumnDefinition Width="415*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <Grid Grid.Row="1"  Grid.Column="1">
+            <DataGrid x:Name="dgMyPokemonList" Margin="0 0 0 100" SelectionMode="Single" IsReadOnly="True"  Loaded="dgMyPokemonList_Loaded" MouseDoubleClick="dgMyPokemonList_MouseDoubleClick"/>
+        </Grid>
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="#2e3137">
+            <StatusBarItem>
+                <Label x:Name="lblStatusMessage"
+                       FontWeight="DemiBold"
+                       Padding="50 0 0 0"
+                       Foreground="White">
+                    Login Success
+                </Label>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Background="#2e3137" Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <Button x:Name="btnHome" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnHome_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Home" Margin="0,0,50,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnPokedeList" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedeList_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="PokéDex"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnStatsCompare" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnStatsCompare_Click" >
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Stats Compare"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLocation" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLocation_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Location"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnAdmin" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnAdmin_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Admin" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLogout" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLogout_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Logout" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Image Source="Images\Pokedex_logo.png" Margin="10"/>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="112.59"/>
+                <ColumnDefinition Width="487.41"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="16,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Click="btnBack_Click"/>
+            <Button x:Name="btnShinies" Content="Shinies" HorizontalAlignment="Left" Margin="142,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.ColumnSpan="2" Click="btnShinies_Click" RenderTransformOrigin="0.613,0.429"/>
+            <Button x:Name="btnRegionalVariants" Content="Regional Variant" HorizontalAlignment="Left" Margin="72,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="2" Click="btnRegionalVariants_Click"/>
+            <Button x:Name="btnAlternate" Content="Alternates" HorizontalAlignment="Left" Margin="197,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="2" Click="btnAlternate_Click"/>
+            <Button x:Name="btnAllPokemon" Content="All Pokemon" HorizontalAlignment="Left" Margin="447,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="2" Grid.ColumnSpan="2" Click="btnAllPokemon_Click"/>
+            <Button x:Name="btnNormalPokemon" Content="Normal Pokemon" HorizontalAlignment="Left" Margin="322,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="2" Click="btnNormalPokemon_Click"/>
+            <Button x:Name="btnRemovePokemon" Content="Remove Pokemon" HorizontalAlignment="Left" Margin="85,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="3" Click="btnRemovePokemon_Click"/>
+            <Button x:Name="btnAddPokemon" Content="Add Pokemon" HorizontalAlignment="Left" Margin="85,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Grid.Column="3" Click="btnAddPokemon_Click"/>
+            <Button x:Name="btnMegas" Content="Megas" HorizontalAlignment="Left" Margin="60,619,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="56" Click="btnMegas_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
+            
+
+        </Grid>
+    </Grid>
+</Window>

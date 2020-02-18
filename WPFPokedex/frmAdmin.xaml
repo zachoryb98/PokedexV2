@@ -1,0 +1,118 @@
+﻿<Window x:Class="WPFPokedex.frmAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPokedex"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Admin" Height="800" Width="1224" ResizeMode="NoResize" Background="#ed3e3e">
+    <Grid MinHeight="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"  Grid.Column="1">
+            <DataGrid x:Name="dgUserList" Margin="0 0 0 100" SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="dgUserList_MouseDoubleClick" Loaded="dgUserList_Loaded"/>
+        </Grid>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="#2e3137">
+            <StatusBarItem>
+                <Label x:Name="lblStatusMessage"
+                       FontWeight="DemiBold"
+                       Padding="50 0 0 0"
+                       Foreground="White">
+                    Login Success
+                </Label>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Background="#2e3137" Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <Button x:Name="btnHome" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnHome_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Home" Margin="0,0,50,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnPokedeList" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedeList_Click" >
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="PokéDex"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnStatsCompare" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnStatsCompare_Click" >
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Stats Compare"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLocation" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLocation_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Location"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnAdmin" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnAdmin_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Admin" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLogout" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLogout_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Logout" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Image Source="Images\Pokedex_logo.png" Margin="10"/>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAddNewUser" Content="New User" Width="100" Height="50" Grid.Row="1" Margin="83,615,26,26" Click="btnAddNewUser_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0 0 0 5" Grid.Column="2"/>
+            <CheckBox x:Name="chkActive" Content="Show Active Users" Grid.Column="1" HorizontalAlignment="Left" Margin="467,630,0,0" Grid.Row="1" VerticalAlignment="Top" Width="133" IsChecked="True" Click="CheckBox_Click"/>
+        </Grid>
+    </Grid>
+</Window>

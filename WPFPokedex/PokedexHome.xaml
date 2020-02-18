@@ -1,0 +1,135 @@
+﻿<Window x:Class="WPFPokedex.PokedexHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPokedex"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="PokedexHome" Height="800" Width="1224" ResizeMode="NoResize" Background="#ed3e3e" Loaded="Window_Loaded">
+    <Grid MinHeight="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="#2e3137">
+            <StatusBarItem>
+                <Label x:Name="lblStatusMessage"
+                       FontWeight="DemiBold"
+                       Padding="50 0 0 0"
+                       Foreground="White">
+                    Login Success
+                </Label>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Background="#2e3137" Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <Button x:Name="btnHome" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedexHome_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Home"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnDex" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnDex_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="PokéDex"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnStatsCompare" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnStatsCompare_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Stats Compare" Margin="0,0,14,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLocation" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLocation_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Location" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnAdmin" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnAdmin_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Admin" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLogout" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLogout_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Logout" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Image Source="Images\Pokedex_logo.png" Margin="10"/>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Image Source="Images\Pokemon-Sword-Logo.png"/>
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="0">
+                <Image Source="Images\Pokemon-Shield-Logo.png"/>
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="1">
+                <Image Margin="10" Source="Images\PIKACHU.png"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="0">
+                <TextBlock Text="Welcome!"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="80" FontWeight="Bold" FontFamily="Pocket Monk"></TextBlock>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="1" >
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24" FontFamily="Franklin Gothic Demi Cond">                    
+                    "Welcome to the PokéDex! Try out some of the different features. 
+                    Click 'Home'to come back here.Press Pokedex to view all 
+                    Pokemon. Press 'Stats Compare' to compare pokemon stats side 
+                    by side. Press 'Battle Simulator' to simulate a battle.
+                    Press 'Location' to view where to catch a pokemon."
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

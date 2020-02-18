@@ -1,0 +1,118 @@
+﻿<Window x:Class="WPFPokedex.frmMyPokemon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPokedex"
+mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Location Look up" Height="800" Width="1224" ResizeMode="NoResize" Background="#ed3e3e" Loaded="Window_Loaded">
+    <Grid MinHeight="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="#2e3137">
+            <StatusBarItem>
+                <Label x:Name="lblStatusMessage"
+                       FontWeight="DemiBold"
+                       Padding="50 0 0 0"
+                       Foreground="White">
+                    Login Success
+                </Label>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Background="#2e3137" Grid.Row="1">
+            <StackPanel Grid.Row="1">
+                <Button x:Name="btnHome" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedexHome_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Home"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnPokedexList" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnPokedexList_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="PokéDex"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnStatsCompare" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnStatsCompare_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Stats Compare"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLocation" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="Location"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnAdmin" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnAdmin_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Admin" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="btnLogout" Margin="10" Height="40" FontSize="18" FontWeight="Bold" Background="#ffcb05" Foreground="#2e3137" Click="btnLogout_Click">
+                    <Grid Width="150">
+                        <TextBlock HorizontalAlignment="Right" Text="Logout" Margin="0,0,38,0"/>
+                    </Grid>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Image Source="Images\Pokedex_logo.png" Margin="10"/>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dgLocationList" HorizontalAlignment="Left" Height="642" Margin="10,29,0,0" VerticalAlignment="Top" Width="498" Grid.ColumnSpan="2" Grid.RowSpan="2" Loaded="dgLocationList_Loaded" SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="DgLocationList_MouseDoubleClick" />
+            <Button x:Name="btnBack" Content="Back" Width="100" Height="50" Grid.Row="1" Grid.Column="0" Margin="10,331,199,10" Click="btnBack_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0 0 5 10" />
+            <Image x:Name="imgMap" Grid.Column="1" HorizontalAlignment="Left" Height="320" Margin="208,30,0,0" VerticalAlignment="Top" Width="485" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="cboGames" Grid.Column="1" HorizontalAlignment="Left" Margin="79,7,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="cboGames_SelectionChanged" Loaded="cboGames_Loaded"/>
+            <TextBox x:Name="txtLocationText" Grid.Column="1" Grid.ColumnSpan="2" Margin="214,111,10,160" IsReadOnly="True" TextWrapping="Wrap" Grid.RowSpan="2"/>
+        </Grid>
+    </Grid>
+</Window>
